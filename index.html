@@ -31,6 +31,27 @@
 
     <body>
 
+         <div id="exampleModal" style="position: fixed; top: -10; width: 100vw; height: 100%; z-index: 100000; left: 10; background: rgba(0, 0, 0, 0.4);">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Transfer your donations to this address</h5>
+                    <button type="button" id="close-modal">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    1NbygmkdhgdPCiLwXfC9usV8xSNXPZkwa1
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="second-close-button">Close</button>
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+ 
+
         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
@@ -87,7 +108,7 @@
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a href="" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Donate Now</a>
+                            <button class="address-btn btn btn-primary text-white py-2 px-4 me-3">Donate Now</button>
                         </div>
                     </div>
                 </nav>
@@ -336,7 +357,7 @@
                                     <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised: $4000</small>
                                 </div>
                                 <div class="causes-dination p-2">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
+                                    <button class="address-btn btn-hover-bg btn btn-primary text-white py-2 px-3">Donate Now</button>
                                 </div>
                             </div>
                             <div class="progress">
@@ -347,7 +368,7 @@
                             <div class="causes-content p-4">
                                 <h4 class="mb-3">First environments activity of</h4>
                                 <p class="mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
-                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Read More</a>
+                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#" data-toggle="modal" data-target="#exampleModal">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -360,7 +381,7 @@
                                     <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised: $4000</small>
                                 </div>
                                 <div class="causes-dination p-2">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
+                                    <button class="address-btn btn-hover-bg btn btn-primary text-white py-2 px-3">Donate Now</button>
                                 </div>
                             </div>
                             <div class="progress">
@@ -371,7 +392,7 @@
                             <div class="causes-content p-4">
                                 <h4 class="mb-3">Build school for poor children.</h4>
                                 <p class="mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
-                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
+                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#" data-toggle="modal" data-target="#exampleModal">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -384,7 +405,7 @@
                                     <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised: $4000</small>
                                 </div>
                                 <div class="causes-dination p-2">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
+                                    <button class="address-btn btn-hover-bg btn btn-primary text-white py-2 px-3">Donate Now</button>
                                 </div>
                             </div>
                             <div class="progress">
@@ -395,7 +416,7 @@
                             <div class="causes-content p-4">
                                 <h4 class="mb-3">Building clean-water system for rural poor.</h4>
                                 <p class="mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
-                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
+                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#" >Read More</a>
                             </div>
                         </div>
                     </div>
@@ -408,7 +429,7 @@
                                     <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised: $4000</small>
                                 </div>
                                 <div class="causes-dination p-2">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
+                                    <button class="address-btn btn-hover-bg btn btn-primary text-white py-2 px-3">Donate Now</button>
                                 </div>
                             </div>
                             <div class="progress">
@@ -489,10 +510,6 @@
             </div>
         </div>
         <!-- Events End -->
-
-
-
- -->
 
 
         <!-- Volunteers Start -->
@@ -698,6 +715,29 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const modal =  document.getElementById("exampleModal")
+                modal.classList.add("d-none")
+                const addresses = document.getElementsByClassName("address-btn");
+                console.log("addresses", addresses)
+                Array.from(addresses).forEach((button) => {
+                    button.addEventListener("click", (e) => {
+                        modal.classList.toggle("d-none")
+                    })
+                })
+                const closeBUtton = document.getElementById("close-modal");
+                const secCloseButton = document.getElementById("second-close-button")
+                console.log("close button", secCloseButton)
+                closeBUtton.addEventListener("click", (e) => {
+                   modal.classList.add('d-none')
+                })
+                secCloseButton.addEventListener("click", (e) => {
+                   modal.classList.add('d-none')
+                })
+            })
+        </script>
 
     </body>
 
